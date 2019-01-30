@@ -1,4 +1,4 @@
-Install-WindowsFeature dsc-service #Requires insider build version 17623 or newer in the docker image
+Install-WindowsFeature dsc-service
 Start-Process msiexec -ArgumentList '/i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES' -Wait
 New-Item -ItemType SymbolicLink -Path C:\Windows\System32\WindowsPowerShell\v1.0\modules\PSDesiredStateConfiguration\PullServer\en -Value C:\Windows\System32\WindowsPowerShell\v1.0\modules\PSDesiredStateConfiguration\PullServer\en-us
 Copy-Item C:\Windows\System32\WindowsPowerShell\v1.0\modules\PSDesiredStateConfiguration\PullServer\Microsoft.Powershell.DesiredStateConfiguration.Service.dll C:\Windows\System32\WindowsPowerShell\v1.0\modules\PSDesiredStateConfiguration\PullServer\en\Microsoft.Powershell.DesiredStateConfiguration.Service.Resources.dll
