@@ -1,0 +1,29 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+
+environment:
+  DOCKER_USER:
+    secure: sjk7+QKMN9sZ4+xrqHXg5A==
+  DOCKER_PASS:
+    secure: 5A+dHjVv7f5zqGdaAtvMyA==
+install:
+  - docker version
+
+build_script:
+  - ps: New-Item -Name PullServerContainer -ItemType Directory
+  - ps: New-Item -Name Modules -ItemType Directory -Path .\PullServerContainer
+  - ps: Install-Module -Name xPSDesiredStateConfiguration
+  - ps: Copy-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\xPSDesiredStateConfiguration' -Destination .\PullServerContainer\Modules -Recurse -Force
+  - ps: Copy-Item .\Docker.ps1 .\PullServerContainer -Force
+
+  - ps: Copy-Item .\DockerMon.ps1 .\PullServerContainer -Force
+  - ps: Copy-Item .\sqlncli.msi .\PullServerContainer -Force
+  - ps: Copy-Item .\DockerFile .\PullServerContainer -Force
+  - docker build .\PullServerContainer -t einar/dscstack:latest
+
+test_script:
+  - docker run einar/dscstack
+
+deploy_script:
+  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+  - docker push einar/dscstack
