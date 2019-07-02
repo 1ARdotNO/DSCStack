@@ -14,7 +14,7 @@ Copy-Item .\DockerFile .\PullServerContainer -Force
 docker build .\PullServerContainer -t einar/dscstack:latest
 
 #Cleanup
-Remove-Item .\PullServerContainer -Force
+#Remove-Item .\PullServerContainer -Force
 
 #Push image to docker hub
 #docker login
