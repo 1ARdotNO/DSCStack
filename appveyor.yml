@@ -12,10 +12,9 @@ install:
 build_script:
   - ps: New-Item -Name PullServerContainer -ItemType Directory
   - ps: New-Item -Name Modules -ItemType Directory -Path .\PullServerContainer
-  - ps: Install-Module -Name xPSDesiredStateConfiguration
+  - ps: Install-Module -Name xPSDesiredStateConfiguration -force -SkipPublisherCheck
   - ps: Copy-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\xPSDesiredStateConfiguration' -Destination .\PullServerContainer\Modules -Recurse -Force
   - ps: Copy-Item .\Docker.ps1 .\PullServerContainer -Force
-
   - ps: Copy-Item .\DockerMon.ps1 .\PullServerContainer -Force
   - ps: Copy-Item .\sqlncli.msi .\PullServerContainer -Force
   - ps: Copy-Item .\DockerFile .\PullServerContainer -Force
