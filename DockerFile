@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows/servercore:1903
+FROM mcr.microsoft.com/windows/servercore/insider:10.0.18922.1000
 LABEL maintainer="https://github.com/OvrAp3x/DSCStack/"
 COPY [ "Modules", "C:/Program Files/WindowsPowerShell/Modules/" ]
 COPY [ "Docker.ps1", "./Docker.ps1" ]
