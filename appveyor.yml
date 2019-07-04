@@ -20,7 +20,7 @@ build_script:
   - docker build .\PullServerContainer --isolation hyperv -t einar/dscstack:latest
 
 test_script:
-  - docker run einar/dscstack
+  - docker run einar/dscstack --isolation hyperv
 
 deploy_script:
   - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
