@@ -17,7 +17,7 @@ build_script:
   - ps: Copy-Item .\DockerMon.ps1 .\PullServerContainer -Force
   - ps: Copy-Item .\sqlncli.msi .\PullServerContainer -Force
   - ps: Copy-Item .\DockerFile .\PullServerContainer -Force
-  - docker build .\PullServerContainer -t einar/dscstack:latest
+  - docker build .\PullServerContainer --isolation hyperv -t einar/dscstack:latest
 
 test_script:
   - docker run einar/dscstack
