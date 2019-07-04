@@ -1,6 +1,5 @@
 version: 1.0.{build}
-image: Windows Server 2019
-
+image: Windows
 environment:
   DOCKER_USER:
     secure: sjk7+QKMN9sZ4+xrqHXg5A==
